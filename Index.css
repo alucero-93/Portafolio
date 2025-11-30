@@ -1,0 +1,295 @@
+/* Definición de variables CSS para ambos modos */
+/* Variables para Modo Oscuro */
+:root {
+    --color-primary: #00e676;
+    /* Verde neón */
+    --color-secondary: #2979ff;
+    /* Azul brillante */
+
+    /* Modo Oscuro por defecto */
+    --bg-dark: #121212;
+    /* Negro suave */
+    --bg-card: #1e1e1e;
+    --text-main: #ffffff;
+    /* Texto principal blanco */
+    --text-muted: #b0b0b0;
+    --border-color: #333;
+    --navbar-bg: rgba(18, 18, 18, 0.95);
+    --shadow: rgba(61, 61, 61, 0.3);
+}
+
+/* Variables para Modo Claro */
+[data-bs-theme="light"] {
+    --color-primary: #008040;
+    /* Verde más oscuro para contraste */
+    --color-secondary: #014c9b;
+    /* Azul más oscuro */
+    --bg-dark: #f8f9fa;
+    /* Fondo claro */
+    --bg-card: #ffffff;
+    --text-main: #212529;
+    /* Texto principal oscuro */
+    --text-muted: #62676b;
+    --border-color: #dee2e6;
+    --navbar-bg: rgba(248, 249, 250, 0.95);
+    --shadow: rgba(0, 0, 0, .3);
+}
+
+    
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Estilo para tu FOTO DE PERFIL --- */
+    .hero-img {
+        width: 300px;           /* Ancho fijo */
+        height: 300px;          /* Alto fijo (igual al ancho para que sea cuadrada) */
+        object-fit: cover;      /* IMPORTANTE: Evita que la foto se estire o aplaste */
+        border-radius: 50%;     /* Esto la vuelve redonda */
+        
+        /* Decoración */
+        border: 4px solid var(--color-primary); /* Borde verde */
+        box-shadow: 0 0 20px rgba(0, 230, 118, 0.4); /* Sombra/Brillo verde suave */
+        
+        /* Centrado */
+        display: block;
+        margin: 0 auto;         /* Centra la imagen horizontalmente */
+
+       
+        animation: _float_ 3s ease-in-out infinite;
+        transition: filter .3s ease,opacity .3s ease
+    }
+
+    /* Ajuste para celulares (un poco más pequeña) */
+    @media (max-width: 768px) {
+        .hero-img {
+            width: 220px;
+            height: 220px;
+            margin-bottom: 20px; /* Espacio debajo de la foto en celular */
+        }
+    }
+
+     /* Animacion imagen */
+    @keyframes _float_ {
+    0%,to {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-10px)
+    }
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--navbar-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-brand {
+    color: var(--color-primary) !important;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text-main) !important;
+    transition: color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-secondary) !important;
+}
+
+/* Hero Section */
+#inicio {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-card) 100%);
+    /* Usar variables */
+}
+
+[data-bs-theme="light"] #inicio {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-card) 100%);
+}
+
+.hero-title span {
+    color: var(--color-primary);
+}
+
+.btn-custom {
+    background-color: transparent;
+    border: 2px solid var(--color-secondary);
+    color: var(--color-secondary);
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: var(--color-secondary);
+    color: white;
+    box-shadow: 0 0 15px rgba(41, 121, 255, 0.5);
+}
+
+/* Secciones Generales */
+section {
+    padding: 80px 0;
+    transition: background-color 0.3s ease;
+}
+
+#habilidades,
+#contacto {
+    /* Secciones con fondo ligeramente diferente en dark mode */
+    background-color: var(--bg-card);
+}
+
+[data-bs-theme="light"] #habilidades,
+[data-bs-theme="light"] #contacto {
+    background-color: #e9ecef;
+    /* Un gris muy claro para light mode */
+}
+
+.section-title {
+    position: relative;
+    margin-bottom: 50px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--color-primary);
+    margin-top: 10px;
+}
+
+/* Cards de Proyectos y Habilidades */
+.custom-card {
+    background-color: var(--bg-card);
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    height: 100%;
+    border-left: 3px solid var(--color-secondary);
+}
+
+.custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+    color: var(--color-primary);
+}
+
+.tech-badge {
+    background-color: rgba(41, 121, 255, 0.2);
+    color: var(--color-secondary);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Habilidades */
+.skill-category h5 {
+    /* Cambiado de h4 a h5 para coherencia */
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Contacto */
+.contact-icon {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+footer {
+    background-color: var(--bg-dark);
+    /* Usar variable */
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-bs-theme="light"] footer {
+    background-color: #e9ecef;
+}
+
+/* Estilo del icono en About Me */
+.fa-code {
+    color: var(--bg-card);
+    /* Ajustado para que sea visible en ambos modos */
+    text-shadow: 0 0 20px var(--color-secondary);
+}
+
+[data-bs-theme="light"] .fa-code {
+    color: #ced4da;
+    /* Gris más claro para que no choque en light mode */
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de Modo Oscuro/Claro */
+.theme-toggle-button {
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 15px;
+    transition: color 0.5s ease;
+}
+
+.theme-toggle-button:hover {
+    color: var(--color-secondary);
+}
+
+.theme-toggle-button .fa-sun,
+.theme-toggle-button .fa-moon {
+    font-size: 1.2rem;
+}
+
+._skill_ {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    padding: .5rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: .9rem;
+    box-shadow: 0 2px 4px var(--shadow);
+    transition: all .3s ease
+}
+
+._specialty_ {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: .75rem;
+    margin-bottom: 2rem
+}
+
+._actions_ {
+    display: flex;
+    gap: 1rem;
+    justify-content: center
+}
