@@ -70,8 +70,7 @@ body {
             width: 220px;
             height: 220px;
             margin-bottom: 20px; /* Espacio debajo de la foto en celular */
-        animation: _float_ 3s ease-in-out infinite;
-        transition: filter .3s ease,opacity .3s ease
+            margin-top: 150px;
         }
     }
 
